@@ -1,16 +1,16 @@
-import os
+import os  
 from PIL import Image
 import numpy as np
 import csv
 import pandas as pd
-
-def openImage(src):
+##src- path of image file
+def openImage(src): 
     return Image.open(src,'r')
-
+## this function reads image and get RGB data
 def readImage(im):
-
-    im = im.convert('RGB')
-    return list(im.getdata())
+    
+    im = im.convert('RGB') ##converts single value to rgb
+    return list(im.getdata()) ##listing all rgb into a list
   
 
 def check_skin(rgb):
@@ -33,10 +33,10 @@ def trainData(pixels, pix_val_actual, pix_val_mask, skin, non_skin):
          r = pix_val_actual[i][0]
          g = pix_val_actual[i][1]
          b = pix_val_actual[i][2]
-#        print(r,g,b)
+
          if(check_skin(pix_val_mask[i])):
-            skin[r][g][b]+=1
-#       
+            skin[r][g][b]+=1 
+      
          else:
             non_skin[r][g][b]+=1
                 
@@ -127,30 +127,37 @@ def createCSV(probability): ##this function creats csv
     
 if __name__ == "__main__":
     
-
+###>>>>>>>>>>>>>>>training phase<<<<<<<<<<<<<<<<<<<<<<
 
 #    pixels = np.zeros((256,256,256))
-#    skin = np.zeros((256,256,256))
+#    skin = np.zeros((256,256,256)) 
 #    non_skin = np.zeros((256,256,256))
 #    
-    probability = np.zeros((256,256,256))
+#    probability = np.zeros((256,256,256))
+
 #    
 #    ###########################--> reading image starts here.
 #    ########### get all the files from that directory
-#    files_actual = os.listdir('SkinDetector-master\data\image')
+#    files_actual = os.listdir('SkinDetector-master\data\image') 
 #    files_mask = os.listdir('SkinDetector-master\data\mask')
 #   ############
 #   
-#    for i in range(len(files_actual)):
+#    for i in range(len(files_actual)): ##iterating throuh all images
 #        print(i)
-#        
-#        pix_val_actual = readImage(openImage('SkinDetector-master\data\image\\'+files_actual[i])) ## storing the pixels of actual picture..
-#        pix_val_mask = readImage(openImage('SkinDetector-master\data\mask\\'+files_mask[i])) ## storing the pixels of mask picture..
+
+#        image_actual_path = 'SkinDetector-master\data\image\\'
+#        imgae_mask_path = 'SkinDetector-master\data\mask\\'
+
+#        pix_val_actual = readImage(openImage(image_actual_path+files_actual[i])) ## storing the pixels of actual picture..
+#        pix_val_mask = readImage(openImage(imgae_mask_path+files_mask[i])) ## storing the pixels of mask picture..
 #       
 #        pixels, skin, non_skin = trainData(pixels, pix_val_actual, pix_val_mask, skin, non_skin) ## this returns the skin value and non_skin value 
 #        
 #    probability = setProbability(pixels, skin, non_skin, probability) ## this returns the probability
 #    createCSV(probability) ## creating CSV from that probabilty and rgb
+
+###>>>>>>>>>>>>>>>end<<<<<<<<<<<<<<<<<<<<<<
+
     probability = pd.read_csv('train.csv') # getting the rows from csv    
     print('Data collection completed') 
 #    print(probability)       
