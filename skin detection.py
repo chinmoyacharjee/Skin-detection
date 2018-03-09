@@ -145,8 +145,8 @@ if __name__ == "__main__":
 #    for i in range(len(files_actual)): ##iterating throuh all images
 #        print(i)
 
-#        image_actual_path = 'SkinDetector-master\data\image\\'
-#        imgae_mask_path = 'SkinDetector-master\data\mask\\'
+#        image_actual_path = 'image\\'
+#        imgae_mask_path = 'mask\\'
 
 #        pix_val_actual = readImage(openImage(image_actual_path+files_actual[i])) ## storing the pixels of actual picture..
 #        pix_val_mask = readImage(openImage(imgae_mask_path+files_mask[i])) ## storing the pixels of mask picture..
