@@ -161,7 +161,9 @@ if __name__ == "__main__":
     probability = pd.read_csv('train.csv') # getting the rows from csv    
     print('Data collection completed') 
 #    print(probability)       
-    test(probability,'t2.jpg') # this tests the data
+
+    #set the path of ur test data
+    test(probability,'test.jpg') # this tests the data
     
     print('Prediction is ready')
     
