@@ -16,4 +16,3 @@
 	4. Now for testing, select an unknown image. Read all the pixels of that image.
 	5. If a particular rgb combinations probability of being skin is greater than a certain threshold(we assume it 0.555555) then consider that combination as skin pixel otherwise non_skin pixel. 
 
-
