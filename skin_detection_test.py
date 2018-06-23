@@ -22,7 +22,7 @@ def create_image(im,probability):
     for i in range(width):
         for j in range(height):
             r,g,b = im.getpixel((i,j))
-            row_num = (r*256*256)+(g*256)+b #calculating the serial row number 
+            row_num = (r*256*256) + (g*256) + b #calculating the serial row number 
             if(probability['Probability'][row_num] <0.555555):
                 pix[i,j] = (0,0,0)
             else:
@@ -42,7 +42,6 @@ def main():
     path = 'test/1.jpg'
     test(probability, path) # this tests the data
     print("Image created")
-
 
 
 if __name__ == "__main__":
